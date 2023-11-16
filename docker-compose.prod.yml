@@ -1,7 +1,7 @@
 version: '3'
 services: 
-  strapi:
-    image: wildcat-pavilion-backend-1.0
+  wildcat:
+    image: 3066199080400/wildcat-pavilion:latest
     environment:
       DATABASE_CLIENT: postgres
       DATABASE_NAME: strapi_forum
@@ -10,7 +10,7 @@ services:
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: chack3349@
     ports:
-      - "1337:1337"
+      - "80:1337"
     depends_on:
       - db
   db:
@@ -20,4 +20,6 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: chack3349@
     volumes:
-      - ./data:/var/lib/postgresql/data 
+      - db_data_prod:/var/lib/postgresql/data
+volumes:
+  db_data_prod:

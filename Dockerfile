@@ -1,11 +1,23 @@
-FROM node:20
-WORKDIR /usr/src/wildcat-pavilion-backend-1.0
+# 使用Node官方镜像作为构建环境
+FROM node:20-alpine
 
-COPY . .
+# 设置工作目录
+WORKDIR /usr/src/wildcat-pavilion
 
+# 复制package.json和yarn.lock文件
+COPY package*.json ./
+
+# 安装依赖
 RUN npm install
 
+# 复制所有源代码到工作目录
+COPY . .
+
+# 构建应用
 RUN npm run build
 
-EXPOSE 1337
+# 应用启动命令
 CMD ["npm","run","develop"]
+
+# 暴露的端口
+EXPOSE 1337
