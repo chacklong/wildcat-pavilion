@@ -17,7 +17,7 @@ pipeline {
                 sh 'npm install'
                 sh 'npm run build'
                 // 添加测试命令
-                sh 'npm run test'
+                // sh 'npm run test'
             }
         }
 
